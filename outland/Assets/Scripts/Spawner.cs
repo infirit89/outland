@@ -26,12 +26,15 @@ public class Spawner : MonoBehaviour
     private Vector2 _BossRoomLocation;
     private int _EnemyCount = 0;
     private GameObject _Grid;
+    private GameManager _GameManager;
     
     // Start is called before the first frame update
     void Start()
     {
+        _GameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         _Rooms = new Room[_GridSizeX * 2, _GridSizeY * 2];
         _Rooms[_GridSizeX, _GridSizeY] = new Room(Vector3.zero);
+        _GameManager.PlayerCellPosition = new Vector2Int(_GridSizeX, _GridSizeY);
         _TakenPositions = new List<Vector2>();
         _TakenPositions.Add(Vector2.zero);
         _Grid = GameObject.Find("Grid");
@@ -124,7 +127,7 @@ public class Spawner : MonoBehaviour
                     int enemyCount = Random.Range(1, MaxEnemyCount + 1);
                     for (int i = 0; i < enemyCount; i++) 
                     {
-                        GameObject enemy = Instantiate(EnemyPrefab, GetRandomEnemyPosition(room.Position), Quaternion.identity);
+                        GameObject enemy = Instantiate(EnemyPrefab, GetRandomEnemyPosition(room.Position), Quaternion.identity, instatiatedRoom.transform.GetChild(6));
                         enemy.name = $"Enemy {_EnemyCount}";
                         _EnemyCount++;
                     }
