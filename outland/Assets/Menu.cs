@@ -4,16 +4,18 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class Menu : MonoBehaviour
 {
+    private const int StartScreenIndex = 0, GameIndex = 1, InstructionsIndex = 3;
+
     public void PlayGame(){
-        SceneManager.LoadScene("Instructions");
+        SceneManager.LoadSceneAsync(InstructionsIndex);
     }
     public void QuitGame(){
         Application.Quit();
     }
     public void EndScreen(){
-        SceneManager.LoadScene("StartScreen");
+        SceneManager.LoadSceneAsync(StartScreenIndex);
     }
     public void Instructions(){
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadSceneAsync(GameIndex);
     }
 }

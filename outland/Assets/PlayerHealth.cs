@@ -15,9 +15,8 @@ public class PlayerHealth : MonoBehaviour
     // Update is called once per frame
     public void TakeDamage(int amount)
     {
-        CurrentHealth-=amount;
-        Debug.Log(GameObject.Find("heart " + CurrentHealth));
         Destroy(GameObject.Find("heart " + CurrentHealth));
+        CurrentHealth-=amount;
         //Debug.Log(GetComponent("heart" + CurrentHealth));
         if(CurrentHealth <= 0){
              SceneManager.LoadSceneAsync("EndScreen");
