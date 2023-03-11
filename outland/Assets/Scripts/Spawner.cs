@@ -123,8 +123,10 @@ public class Spawner : MonoBehaviour
 
                 if(room.Position != new Vector3(_BossRoomLocation.x, _BossRoomLocation.y, 0.0f) &&
                     room.Position != Vector3.zero) 
+                    SpawnEnemies(room, instatiatedRoom);
+                else if(room.Position == new Vector3(_BossRoomLocation.x, _BossRoomLocation.y, 0.0f)) 
                 {
-                    int enemyCount = Random.Range(1, MaxEnemyCount + 1);
+                    int enemyCount = Random.Range(4, (MaxEnemyCount * 3) + 1);
                     for (int i = 0; i < enemyCount; i++) 
                     {
                         GameObject enemy = Instantiate(EnemyPrefab, GetRandomEnemyPosition(room.Position), Quaternion.identity, instatiatedRoom.transform.GetChild(6));
@@ -134,8 +136,17 @@ public class Spawner : MonoBehaviour
                 }
             }
         }
+    }
 
-        Instantiate(BossRoomPrefab, _BossRoomLocation, Quaternion.identity);
+    private void SpawnEnemies(Room room, GameObject instatiatedRoom, int minEnemyCount = 1) 
+    {
+        int enemyCount = Random.Range(minEnemyCount, MaxEnemyCount + 1);
+        for (int i = 0; i < enemyCount; i++) 
+        {
+            GameObject enemy = Instantiate(EnemyPrefab, GetRandomEnemyPosition(room.Position), Quaternion.identity, instatiatedRoom.transform.GetChild(6));
+            enemy.name = $"Enemy {_EnemyCount}";
+            _EnemyCount++;
+        }
     }
 
     private void GenerateDoors() 

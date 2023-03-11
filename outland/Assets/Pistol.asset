@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Pistol
   m_EditorClassIdentifier: 
   Range: 10
-  Damage: 10
+  Damage: 1
   FireRate: 5
   WeaponSprite: {fileID: 21300000, guid: a43a1a09a18ac3440aa96621c23324af, type: 3}
   BulletPrefab: {fileID: 8850155217078972657, guid: 85f16e4976962dc448fe8c831719c286, type: 3}
