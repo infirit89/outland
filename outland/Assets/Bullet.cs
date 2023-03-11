@@ -15,9 +15,7 @@ public class Bullet : MonoBehaviour
     {
         // TODO: make entity base class
         if(other.CompareTag("Player"))
-        {
-            // player take damage
-        }
+            other.GetComponent<PlayerHealth>().TakeDamage(Damage);
         else if(other.CompareTag("Enemy"))
             other.GetComponent<Enemy>().TakeDamage(Damage);
         

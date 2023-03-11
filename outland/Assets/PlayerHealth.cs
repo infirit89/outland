@@ -16,10 +16,11 @@ public class PlayerHealth : MonoBehaviour
     public void TakeDamage(int amount)
     {
         CurrentHealth-=amount;
-        Destroy(GameObject.Find("heart" + CurrentHealth));
-        Debug.Log(GetComponent("heart" + CurrentHealth));
+        Debug.Log(GameObject.Find("heart " + CurrentHealth));
+        Destroy(GameObject.Find("heart " + CurrentHealth));
+        //Debug.Log(GetComponent("heart" + CurrentHealth));
         if(CurrentHealth <= 0){
-             SceneManager.LoadScene("EndScreen");
+             SceneManager.LoadSceneAsync("EndScreen");
         }
     }
 }
