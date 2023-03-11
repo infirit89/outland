@@ -4,33 +4,22 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float Speed = 20f;
-    public Rigidbody2D RigidBody;
-
-    public Weapon ShotByWeapon; 
-    private float _TimeAlive = 0f;
-    void Start()
+    //public GameObject HitEffect;
+    private float _TimeAlive = 0.0f;
+    public Weapon ShotBy;
+    public float Speed = 20.0f;
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        RigidBody.velocity = transform.right * Speed;
-
+        Destroy(gameObject);
     }
 
     void Update()
     {
         _TimeAlive += Time.deltaTime;
-        if (_TimeAlive * Speed >= ShotByWeapon.Range)
-            Destroy(gameObject);
-
-    }
-    /*void OnTriggerEnter2D(Collider2D collider)
-    {
-        Enemy enemy = collider.GetComponent<Enemy>();
-        if (enemy != null)
+        if (_TimeAlive * Speed >= ShotBy.Range)
         {
-            enemy.TakeDamage(ShotByWeapon.Damge);
+            Destroy(gameObject);
+            _TimeAlive = 0f;
         }
-        Destroy(gameObject);
     }
-    */
-
 }
