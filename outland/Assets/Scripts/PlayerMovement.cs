@@ -15,21 +15,22 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        LookAtMouse();
         Move();
+        LookAtMouse();
     }
 
     private void LookAtMouse()
     {
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 direction = mousePos - new Vector2(transform.position.x, transform.position.y);
+        Vector2 direction = mousePos - _rigidbody.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90;
         _rigidbody.rotation = angle;
     }
     private void Move()
     {
-        var input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        _rigidbody.velocity = input.normalized * _speed;
-        animator.SetFloat("Speed", input.x);
+        var input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        _rigidbody.MovePosition(_rigidbody.position + input * _speed * Time.deltaTime);
+        //animator.SetFloat("Speed", input.x != 0 ? Mathf.Abs(input.x) : Mathf.Abs(input.y));
+        //input.Normalize();
     }
 }
