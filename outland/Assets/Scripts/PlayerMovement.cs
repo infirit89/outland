@@ -5,14 +5,17 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float MoveSpeed = 5f;
-    public Rigidbody2D Rigidbody;
     private Vector2 _Movement;
     private Vector2 _MousePos;
     private Camera _MainCamera;
+    private Shooting _Shooting;
+    private Rigidbody2D _Rigidbody;
 
     private void Start() 
     {
         _MainCamera = Camera.main;
+        _Shooting = GetComponent<Shooting>();
+        _Rigidbody = GetComponent<Rigidbody2D>();
     }
 
     private void Update()
@@ -20,15 +23,18 @@ public class PlayerMovement : MonoBehaviour
         _Movement.x = Input.GetAxisRaw("Horizontal");
         _Movement.y = Input.GetAxisRaw("Vertical");
 
+        if(Input.GetButtonDown("Fire1"))
+            _Shooting.Shoot();
+
         _MousePos = _MainCamera.ScreenToWorldPoint(Input.mousePosition);
     }
 
     private void FixedUpdate()
     {
-        Rigidbody.MovePosition(Rigidbody.position + _Movement * MoveSpeed * Time.fixedDeltaTime);
+        _Rigidbody.MovePosition(_Rigidbody.position + _Movement * MoveSpeed * Time.fixedDeltaTime);
 
-        Vector2 lookDir = _MousePos - Rigidbody.position;
+        Vector2 lookDir = _MousePos - _Rigidbody.position;
         float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
-        Rigidbody.rotation = angle;
+        _Rigidbody.rotation = angle;
     }
 }

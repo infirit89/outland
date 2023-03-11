@@ -8,8 +8,19 @@ public class Bullet : MonoBehaviour
     private float _TimeAlive = 0.0f;
     public Weapon ShotBy;
     public float Speed = 20.0f;
-    void OnCollisionEnter2D(Collision2D collision)
+
+    [HideInInspector]
+    public int Damage = 0;
+    private void OnTriggerEnter2D(Collider2D other) 
     {
+        // TODO: make entity base class
+        if(other.CompareTag("Player"))
+        {
+            // player take damage
+        }
+        else if(other.CompareTag("Enemy"))
+            other.GetComponent<Enemy>().TakeDamage(Damage);
+        
         Destroy(gameObject);
     }
 
