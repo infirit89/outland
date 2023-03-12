@@ -14,10 +14,8 @@ public class Bullet : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) 
     {
         // TODO: make entity base class
-        if(other.CompareTag("Player"))
-            other.GetComponent<PlayerHealth>().TakeDamage(Damage);
-        else if(other.CompareTag("Enemy"))
-            other.GetComponent<Enemy>().TakeDamage(Damage);
+        if(other.CompareTag("Player") || other.CompareTag("Enemy"))
+            other.GetComponent<Stats>().TakeDamage(Damage);
         
         Destroy(gameObject);
     }

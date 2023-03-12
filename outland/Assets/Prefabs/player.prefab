@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 3154362123378928354}
   - component: {fileID: 3154362123378928355}
   - component: {fileID: 3154362123378928352}
-  - component: {fileID: 3154362123378928381}
   - component: {fileID: 3154362123378928380}
   - component: {fileID: 2839508707166645006}
   - component: {fileID: 7794613077075708063}
-  - component: {fileID: 4014788099997937607}
+  - component: {fileID: 6539509584552560398}
+  - component: {fileID: 504378559}
   m_Layer: 0
   m_Name: player
   m_TagString: Player
@@ -112,26 +112,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!95 &3154362123378928381
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3154362123378928358}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4a88bf6f178c8064ca5648f5f669fb65, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
 --- !u!114 &3154362123378928380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,7 +158,7 @@ MonoBehaviour:
   Speed: 20
   ShotWith: {fileID: 11400000, guid: e30b81a2b05661341b83545d55c1835e, type: 2}
   TimeSinceLastShot: 0
---- !u!114 &4014788099997937607
+--- !u!114 &6539509584552560398
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -187,11 +167,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 3154362123378928358}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f5b2a0033a7b6040815bfd124669aac, type: 3}
+  m_Script: {fileID: 11500000, guid: dde93ca6f3382f34fbc84924b394b627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 6
-  CurrentHealth: 0
+  Health: 6
+--- !u!114 &504378559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3154362123378928358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a199907e1e00274e944ab2532b793e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HeartPrefab: {fileID: 2105922226839687857, guid: 8d6965853cbd2574a9210f6dd7575e66, type: 3}
+  HeartStartPosition: {fileID: 0}
 --- !u!1 &3903398487893858606
 GameObject:
   m_ObjectHideFlags: 0

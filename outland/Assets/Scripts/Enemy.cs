@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     public float AggroDistance;
     public float StartTimeBetweenShots;
     public int Health = 0;
+    private Stats _Stats;
 
     private Transform _Player;
     private float _TimeBetweenShots;
@@ -18,6 +19,9 @@ public class Enemy : MonoBehaviour
     
     private void Start()
     {
+        _Stats = GetComponent<Stats>();
+        _Stats.OnDied = () => Destroy(gameObject);
+        
         _Player = GameObject.FindGameObjectWithTag("Player").transform;
         _TimeBetweenShots = StartTimeBetweenShots;
         _Rigidbody = GetComponent<Rigidbody2D>();
@@ -40,11 +44,5 @@ public class Enemy : MonoBehaviour
             transform.position = Vector2.MoveTowards(transform.position, _Player.position, -Speed * Time.deltaTime);
 
         _Shooting.Shoot();
-    }
-
-    public void TakeDamage(int damage) 
-    {
-        Health -= damage;
-        if(Health <= 0) Destroy(gameObject);
     }
 }
