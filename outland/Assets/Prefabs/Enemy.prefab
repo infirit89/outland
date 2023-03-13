@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 8403094855088483684}
   - component: {fileID: 561124094278517752}
   - component: {fileID: 362970205553709056}
+  - component: {fileID: 4690677092877639795}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -137,7 +138,7 @@ MonoBehaviour:
   RetreatDistance: 2.5
   AggroDistance: 20
   StartTimeBetweenShots: 2
-  Health: 10
+  Health: 4
 --- !u!58 &8403094855088483684
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -192,3 +193,16 @@ MonoBehaviour:
   Speed: 20
   ShotWith: {fileID: 11400000, guid: e30b81a2b05661341b83545d55c1835e, type: 2}
   TimeSinceLastShot: 0
+--- !u!114 &4690677092877639795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9156813231762115737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dde93ca6f3382f34fbc84924b394b627, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: 4
